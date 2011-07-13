@@ -1,0 +1,622 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://my.server:13000/pebble/services/IAFIntegrationService" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://my.server:13000/pebble/services/IAFIntegrationService" xmlns:intf="http://my.server:13000/pebble/services/IAFIntegrationService" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns1="http://util.integratedapps.soap50.ce.collabnet.com" xmlns:tns2="qConfigParam" xmlns:tns3="qSearchInfo" xmlns:tns4="qAuthenticationInfo" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema targetNamespace="qConfigParam" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://util.integratedapps.soap50.ce.collabnet.com"/>
+   <import namespace="qAuthenticationInfo"/>
+   <import namespace="qSearchInfo"/>
+   <import namespace="http://xml.apache.org/xml-soap"/>
+   <import namespace="http://my.server:13000/pebble/services/IAFIntegrationService"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="qConfigParam">
+    <sequence>
+     <element name="configParam" nillable="true" type="xsd:qArrayOfConfigParamDO"/>
+     <element name="deleted" type="xsd:boolean"/>
+     <element name="locked" type="xsd:boolean"/>
+     <element name="parentProjectId" nillable="true" type="soapenc:string"/>
+     <element name="projectId" nillable="true" type="soapenc:string"/>
+     <element name="projectName" nillable="true" type="soapenc:string"/>
+     <element name="projectUrl" nillable="true" type="soapenc:string"/>
+     <element name="template" type="xsd:boolean"/>
+     <element name="userId" nillable="true" type="soapenc:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema targetNamespace="http://xml.apache.org/xml-soap" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://util.integratedapps.soap50.ce.collabnet.com"/>
+   <import namespace="qAuthenticationInfo"/>
+   <import namespace="qSearchInfo"/>
+   <import namespace="http://my.server:13000/pebble/services/IAFIntegrationService"/>
+   <import namespace="qConfigParam"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="mapItem">
+    <sequence>
+     <element name="key" nillable="true" type="xsd:anyType"/>
+     <element name="value" nillable="true" type="xsd:anyType"/>
+    </sequence>
+   </complexType>
+   <complexType name="Map">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="apachesoap:mapItem"/>
+    </sequence>
+   </complexType>
+   <complexType name="Vector">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:anyType"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema targetNamespace="http://my.server:13000/pebble/services/IAFIntegrationService" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://util.integratedapps.soap50.ce.collabnet.com"/>
+   <import namespace="qAuthenticationInfo"/>
+   <import namespace="qSearchInfo"/>
+   <import namespace="http://xml.apache.org/xml-soap"/>
+   <import namespace="qConfigParam"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="ArrayOf_xsd_anyType">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="xsd:anyType[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+  </schema>
+  <schema targetNamespace="qSearchInfo" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://util.integratedapps.soap50.ce.collabnet.com"/>
+   <import namespace="qAuthenticationInfo"/>
+   <import namespace="http://xml.apache.org/xml-soap"/>
+   <import namespace="http://my.server:13000/pebble/services/IAFIntegrationService"/>
+   <import namespace="qConfigParam"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="qSearchInfo">
+    <sequence>
+     <element name="attachment" nillable="true" type="soapenc:boolean"/>
+     <element name="comment" nillable="true" type="soapenc:boolean"/>
+     <element name="document" nillable="true" type="soapenc:boolean"/>
+     <element name="keyWord" nillable="true" type="soapenc:string"/>
+     <element name="plugAppName" nillable="true" type="soapenc:string"/>
+     <element name="selectProject" nillable="true" type="impl:ArrayOf_xsd_anyType"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema targetNamespace="qAuthenticationInfo" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://util.integratedapps.soap50.ce.collabnet.com"/>
+   <import namespace="qSearchInfo"/>
+   <import namespace="http://xml.apache.org/xml-soap"/>
+   <import namespace="http://my.server:13000/pebble/services/IAFIntegrationService"/>
+   <import namespace="qConfigParam"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="qAuthenticationInfo">
+    <sequence>
+     <element name="integratedAppBaseUrl" nillable="true" type="soapenc:string"/>
+     <element name="loginToken" nillable="true" type="soapenc:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="findProjectIdForObjectRequest">
+
+      <wsdl:part name="objectId" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="createProjectConfigRequest">
+
+      <wsdl:part name="iaConfig" type="tns2:qConfigParam"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="validateParametersForTemplatizedProjectResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="getSearchResultsRequest">
+
+      <wsdl:part name="searchInfo" type="tns3:qSearchInfo"/>
+
+      <wsdl:part name="authInfo" type="tns4:qAuthenticationInfo"/>
+
+      <wsdl:part name="locale" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="editProjectConfigRequest">
+
+      <wsdl:part name="iaConfig" type="tns2:qConfigParam"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="createTemplateResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="getSoapSessionIdRequest">
+
+      <wsdl:part name="oneTimeToken" type="soapenc:string"/>
+
+      <wsdl:part name="iAppSupport" type="xsd:anyType"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getObjectTitleResponse">
+
+      <wsdl:part name="getObjectTitleReturn" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteProjectConfigRequest">
+
+      <wsdl:part name="iaConfig" type="tns2:qConfigParam"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getConfigurationParametersResponse">
+
+      <wsdl:part name="getConfigurationParametersReturn" type="xsd:qArrayOfConfigParamDO"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getTemplateContentRequest">
+
+      <wsdl:part name="templateName" type="soapenc:string"/>
+
+      <wsdl:part name="locale" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getConfigurationParametersRequest">
+
+      <wsdl:part name="projectId" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="createProjectConfigResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="findProjectIdForObjectResponse">
+
+      <wsdl:part name="findProjectIdForObjectReturn" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getObjectTitleRequest">
+
+      <wsdl:part name="objectId" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="createTemplatizedProjectConfigResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteProjectConfigResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="validateParametersForTemplatizedProjectRequest">
+
+      <wsdl:part name="iaConfig" type="tns2:qConfigParam"/>
+
+      <wsdl:part name="projectConfigurationParameters" type="apachesoap:Map"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="editProjectConfigResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="getTemplateMetadataRequest">
+
+      <wsdl:part name="locale" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getTemplateMetadataResponse">
+
+      <wsdl:part name="getTemplateMetadataReturn" type="apachesoap:Map"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getSoapSessionIdResponse">
+
+      <wsdl:part name="getSoapSessionIdReturn" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="createTemplatizedProjectConfigRequest">
+
+      <wsdl:part name="iaConfig" type="tns2:qConfigParam"/>
+
+      <wsdl:part name="templateId" type="soapenc:string"/>
+
+      <wsdl:part name="title" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="createTemplateRequest">
+
+      <wsdl:part name="sourceProjectId" type="soapenc:string"/>
+
+      <wsdl:part name="templateId" type="soapenc:string"/>
+
+      <wsdl:part name="templateName" type="soapenc:string"/>
+
+      <wsdl:part name="creatorId" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getSearchResultsResponse">
+
+      <wsdl:part name="getSearchResultsReturn" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getTemplateContentResponse">
+
+      <wsdl:part name="getTemplateContentReturn" type="apachesoap:Map"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="IAFIntegrationService">
+
+      <wsdl:operation name="getSoapSessionId" parameterOrder="oneTimeToken iAppSupport">
+
+         <wsdl:input message="impl:getSoapSessionIdRequest" name="getSoapSessionIdRequest"/>
+
+         <wsdl:output message="impl:getSoapSessionIdResponse" name="getSoapSessionIdResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createProjectConfig" parameterOrder="iaConfig">
+
+         <wsdl:input message="impl:createProjectConfigRequest" name="createProjectConfigRequest"/>
+
+         <wsdl:output message="impl:createProjectConfigResponse" name="createProjectConfigResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getConfigurationParameters" parameterOrder="projectId">
+
+         <wsdl:input message="impl:getConfigurationParametersRequest" name="getConfigurationParametersRequest"/>
+
+         <wsdl:output message="impl:getConfigurationParametersResponse" name="getConfigurationParametersResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="editProjectConfig" parameterOrder="iaConfig">
+
+         <wsdl:input message="impl:editProjectConfigRequest" name="editProjectConfigRequest"/>
+
+         <wsdl:output message="impl:editProjectConfigResponse" name="editProjectConfigResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteProjectConfig" parameterOrder="iaConfig">
+
+         <wsdl:input message="impl:deleteProjectConfigRequest" name="deleteProjectConfigRequest"/>
+
+         <wsdl:output message="impl:deleteProjectConfigResponse" name="deleteProjectConfigResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="findProjectIdForObject" parameterOrder="objectId">
+
+         <wsdl:input message="impl:findProjectIdForObjectRequest" name="findProjectIdForObjectRequest"/>
+
+         <wsdl:output message="impl:findProjectIdForObjectResponse" name="findProjectIdForObjectResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getObjectTitle" parameterOrder="objectId">
+
+         <wsdl:input message="impl:getObjectTitleRequest" name="getObjectTitleRequest"/>
+
+         <wsdl:output message="impl:getObjectTitleResponse" name="getObjectTitleResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createTemplate" parameterOrder="sourceProjectId templateId templateName creatorId">
+
+         <wsdl:input message="impl:createTemplateRequest" name="createTemplateRequest"/>
+
+         <wsdl:output message="impl:createTemplateResponse" name="createTemplateResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getTemplateMetadata" parameterOrder="locale">
+
+         <wsdl:input message="impl:getTemplateMetadataRequest" name="getTemplateMetadataRequest"/>
+
+         <wsdl:output message="impl:getTemplateMetadataResponse" name="getTemplateMetadataResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getTemplateContent" parameterOrder="templateName locale">
+
+         <wsdl:input message="impl:getTemplateContentRequest" name="getTemplateContentRequest"/>
+
+         <wsdl:output message="impl:getTemplateContentResponse" name="getTemplateContentResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="validateParametersForTemplatizedProject" parameterOrder="iaConfig projectConfigurationParameters">
+
+         <wsdl:input message="impl:validateParametersForTemplatizedProjectRequest" name="validateParametersForTemplatizedProjectRequest"/>
+
+         <wsdl:output message="impl:validateParametersForTemplatizedProjectResponse" name="validateParametersForTemplatizedProjectResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createTemplatizedProjectConfig" parameterOrder="iaConfig templateId title">
+
+         <wsdl:input message="impl:createTemplatizedProjectConfigRequest" name="createTemplatizedProjectConfigRequest"/>
+
+         <wsdl:output message="impl:createTemplatizedProjectConfigResponse" name="createTemplatizedProjectConfigResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getSearchResults" parameterOrder="searchInfo authInfo locale">
+
+         <wsdl:input message="impl:getSearchResultsRequest" name="getSearchResultsRequest"/>
+
+         <wsdl:output message="impl:getSearchResultsResponse" name="getSearchResultsResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="IAFIntegrationServiceSoapBinding" type="impl:IAFIntegrationService">
+
+      <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getSoapSessionId">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getSoapSessionIdRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://adapter.pebble.collabnet.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getSoapSessionIdResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://my.server:13000/pebble/services/IAFIntegrationService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createProjectConfig">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="createProjectConfigRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://adapter.pebble.collabnet.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="createProjectConfigResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://my.server:13000/pebble/services/IAFIntegrationService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getConfigurationParameters">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getConfigurationParametersRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://adapter.pebble.collabnet.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getConfigurationParametersResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://my.server:13000/pebble/services/IAFIntegrationService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="editProjectConfig">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="editProjectConfigRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://adapter.pebble.collabnet.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="editProjectConfigResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://my.server:13000/pebble/services/IAFIntegrationService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteProjectConfig">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="deleteProjectConfigRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://adapter.pebble.collabnet.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deleteProjectConfigResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://my.server:13000/pebble/services/IAFIntegrationService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="findProjectIdForObject">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="findProjectIdForObjectRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://adapter.pebble.collabnet.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="findProjectIdForObjectResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://my.server:13000/pebble/services/IAFIntegrationService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getObjectTitle">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getObjectTitleRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://adapter.pebble.collabnet.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getObjectTitleResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://my.server:13000/pebble/services/IAFIntegrationService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createTemplate">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="createTemplateRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://adapter.pebble.collabnet.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="createTemplateResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://my.server:13000/pebble/services/IAFIntegrationService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getTemplateMetadata">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getTemplateMetadataRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://adapter.pebble.collabnet.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getTemplateMetadataResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://my.server:13000/pebble/services/IAFIntegrationService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getTemplateContent">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getTemplateContentRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://adapter.pebble.collabnet.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getTemplateContentResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://my.server:13000/pebble/services/IAFIntegrationService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="validateParametersForTemplatizedProject">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="validateParametersForTemplatizedProjectRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://adapter.pebble.collabnet.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="validateParametersForTemplatizedProjectResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://my.server:13000/pebble/services/IAFIntegrationService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createTemplatizedProjectConfig">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="createTemplatizedProjectConfigRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://adapter.pebble.collabnet.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="createTemplatizedProjectConfigResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://my.server:13000/pebble/services/IAFIntegrationService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getSearchResults">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getSearchResultsRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://adapter.pebble.collabnet.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getSearchResultsResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://my.server:13000/pebble/services/IAFIntegrationService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="IAFIntegrationServiceService">
+
+      <wsdl:port binding="impl:IAFIntegrationServiceSoapBinding" name="IAFIntegrationService">
+
+         <wsdlsoap:address location="http://my.server:13000/pebble/services/IAFIntegrationService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
