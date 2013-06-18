@@ -18,6 +18,10 @@
 			<id>kos</id>
 			<url>http://opensource.kantega.no/nexus/content/groups/public/</url>
 		</repository>
+		<repository>
+			<id>ccf-repo</id>
+			<url>http://ccf.open.collab.net/mvnrepo</url>
+		</repository>		
 	</repositories>
 	<dependencies>
 		<dependency>
